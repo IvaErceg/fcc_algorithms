@@ -40,7 +40,24 @@ function factorialize(num) {
   return result;
 }
 
+/**
+ * Returns the length of the longest word in a string
+ * @param {String} str - input string
+ * @return {Number} - length of the longest word in a string
+ */
+function findLongestWordLength(str) {
+  const arrOfWords = str.split(" ");
+  let longest = arrOfWords[0];
+  for (let i = 1, len = arrOfWords.length; i < len; i++) {
+    if (arrOfWords[i].length > longest.length) {
+      longest = arrOfWords[i];
+    }
+  }
+  return longest.length;
+}
+
 convertToF(30);
 reverseString("hello");
 factorializeRecursive(10);
 factorialize(5);
+findLongestWordLength("The quick brown fox jumped over the lazy dog");
