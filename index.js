@@ -67,9 +67,22 @@ function largestOfFour(arr) {
   return arrOfLargest;
 }
 
+/**
+ * Checks if string ends with certain substring
+ * @param {String} str - string to check
+ * @param {String} target - ending
+ * @return {Boolean} - true if string ends with an target, false otherwise
+ */
+function confirmEnding(str, target) {
+  const len = target.length;
+  return str.slice(-len) === target;
+}
+
+
 convertToF(30);
 reverseString("hello");
 factorializeRecursive(10);
 factorialize(5);
 findLongestWordLength("The quick brown fox jumped over the lazy dog");
 largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]);
+confirmEnding("Bastian", "n");
