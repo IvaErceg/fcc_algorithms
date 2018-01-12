@@ -41,7 +41,7 @@ function factorialize(num) {
 }
 
 /**
- * Returns the length of the longest word in a string
+ * Finds the longest word in a string
  * @param {String} str - input string
  * @return {Number} - length of the longest word in a string
  */
@@ -56,8 +56,20 @@ function findLongestWordLength(str) {
   return longest.length;
 }
 
+/**
+ * Returns an array consisting of the largest number from each provided sub-array
+ * @param {Array} arr - multidimensional array
+ * @return {Array} - arrOfLargest - array consisting of largest number in each subarray of an input's array
+ */
+function largestOfFour(arr) {
+  const arrOfLargest = [];
+  arr.forEach(el => arrOfLargest.push(Math.max(...el)));
+  return arrOfLargest;
+}
+
 convertToF(30);
 reverseString("hello");
 factorializeRecursive(10);
 factorialize(5);
 findLongestWordLength("The quick brown fox jumped over the lazy dog");
+largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]);
