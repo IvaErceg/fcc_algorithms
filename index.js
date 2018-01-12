@@ -78,11 +78,29 @@ function confirmEnding(str, target) {
   return str.slice(-len) === target;
 }
 
+function repeatStringNumTimes(str, num) {
+  if (num <= 0) {
+    return "";
+  }
+  let repeated = str;
+  for (let i = 1; i < num; i++) {
+    repeated += str;
+  }
+  return repeated;
+}
+
+
 
 convertToF(30);
 reverseString("hello");
 factorializeRecursive(10);
 factorialize(5);
 findLongestWordLength("The quick brown fox jumped over the lazy dog");
-largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]);
+largestOfFour([
+  [4, 5, 1, 3],
+  [13, 27, 18, 26],
+  [32, 35, 37, 39],
+  [1000, 1001, 857, 1]
+]);
 confirmEnding("Bastian", "n");
+repeatStringNumTimes("abc", 5);
