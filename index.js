@@ -78,6 +78,12 @@ function confirmEnding(str, target) {
   return str.slice(-len) === target;
 }
 
+/**
+ * Repeat a given string str for num times. Return an empty string if num is not a positive number.
+ * @param {String} str - string to repeat
+ * @param {Number} num - times to repeat
+ * @return {String} repeated - string repeated num times or empty string if num <= 0
+ */
 function repeatStringNumTimes(str, num) {
   if (num <= 0) {
     return "";
@@ -88,6 +94,17 @@ function repeatStringNumTimes(str, num) {
   }
   return repeated;
 }
+
+/**
+ * Looks through an array and returns the first element in the array for which the function returns true
+ * @param {Array} arr - array of elements
+ * @param {Function} func - callback to invoke on each el of an array
+ * @return first el of the array for which function returns true
+ */
+function findElement(arr, func) {
+  return arr.find(el => func(el));
+}
+
 
 
 
@@ -104,3 +121,4 @@ largestOfFour([
 ]);
 confirmEnding("Bastian", "n");
 repeatStringNumTimes("abc", 5);
+findElement([1, 2, 3, 4], function(num){ return num % 2 === 0; });
