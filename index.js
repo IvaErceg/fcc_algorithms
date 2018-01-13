@@ -105,8 +105,25 @@ function findElement(arr, func) {
   return arr.find(el => func(el));
 }
 
+/**
+ * Checks if a value is classified as a boolean primitive
+ * @param {*} bool - value to test
+ * @return {boolean} - true or false
+ */
+function booWho(bool) {
+  return typeof bool === "boolean";
+}
 
-
+/**
+ * Capitalize each word in the provided string, turn other characters lowercase.
+ * @param {String} str - provided string
+ * @returns {String} - capitalized string
+ */
+function titleCase(str) {
+  const arrOfStrings =  str.split(" "); //turn to array
+  return arrOfStrings.map(el => el.charAt(0).toUpperCase() + el.slice(1).toLowerCase())
+  .join(" "); //back to string
+}
 
 convertToF(30);
 reverseString("hello");
@@ -122,3 +139,5 @@ largestOfFour([
 confirmEnding("Bastian", "n");
 repeatStringNumTimes("abc", 5);
 findElement([1, 2, 3, 4], function(num){ return num % 2 === 0; });
+booWho(null);
+titleCase("I'm a little tea pot");
