@@ -125,6 +125,15 @@ function titleCase(str) {
   .join(" "); //back to string
 }
 
+/**
+ * Remove all falsy values from an array
+ * @param {Array} arr - array to filter
+ * @return {Array} array with only truthy values
+ */
+function bouncer(arr) {
+  return arr.filter(el => el);
+}
+
 convertToF(30);
 reverseString("hello");
 factorializeRecursive(10);
@@ -141,3 +150,4 @@ repeatStringNumTimes("abc", 5);
 findElement([1, 2, 3, 4], function(num){ return num % 2 === 0; });
 booWho(null);
 titleCase("I'm a little tea pot");
+bouncer([7, "ate", "", false, 9]);
