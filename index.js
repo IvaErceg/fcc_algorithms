@@ -150,6 +150,22 @@ function getIndexToIns(arr, num) {
   return index === -1 ? sortedArr.length : index;
 }
 
+/**
+ * Checks if the string in the first element of the array contains all of the letters of the string in the second element of the array
+ * @param {*} arr - arr with two words
+ * @returns {Boolean} - true if the first word contains all the letters from the second, false otherwise
+ */
+function mutation(arr) {
+  const target = arr[1].toLowerCase();
+  const source = arr[0].toLowerCase();
+  for (let i = 0; i < target.length; i++) {
+    if (source.indexOf(target[i]) === -1) {
+      return false;
+    }
+  }
+  return true;
+}
+
 convertToF(30);
 reverseString("hello");
 factorializeRecursive(10);
@@ -170,3 +186,4 @@ booWho(null);
 titleCase("I'm a little tea pot");
 bouncer([7, "ate", "", false, 9]);
 getIndexToIns([2, 5, 10], 15);
+mutation(["hello", "Hello"]);
