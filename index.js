@@ -120,9 +120,10 @@ function booWho(bool) {
  * @returns {String} - capitalized string
  */
 function titleCase(str) {
-  const arrOfStrings =  str.split(" "); //turn to array
-  return arrOfStrings.map(el => el.charAt(0).toUpperCase() + el.slice(1).toLowerCase())
-  .join(" "); //back to string
+  const arrOfStrings = str.split(" "); //turn to array
+  return arrOfStrings
+    .map(el => el.charAt(0).toUpperCase() + el.slice(1).toLowerCase())
+    .join(" "); //back to string
 }
 
 /**
@@ -132,6 +133,21 @@ function titleCase(str) {
  */
 function bouncer(arr) {
   return arr.filter(el => el);
+}
+
+/**
+ * Find the lowest index at which a value should be inserted into an array once it has been sorted
+ * @param {Array} arr - array in which to insert
+ * @param {Number} num - elelemnt to insert
+ * @return {Number} index on which to insert given number
+ */
+function getIndexToIns(arr, num) {
+  if (arr.length === 0) {
+    return 0;
+  }
+  const sortedArr = arr.sort((a, b) => a - b);
+  const index = sortedArr.findIndex(el => el >= num);
+  return index === -1 ? sortedArr.length : index;
 }
 
 convertToF(30);
@@ -147,7 +163,10 @@ largestOfFour([
 ]);
 confirmEnding("Bastian", "n");
 repeatStringNumTimes("abc", 5);
-findElement([1, 2, 3, 4], function(num){ return num % 2 === 0; });
+findElement([1, 2, 3, 4], function(num) {
+  return num % 2 === 0;
+});
 booWho(null);
 titleCase("I'm a little tea pot");
 bouncer([7, "ate", "", false, 9]);
+getIndexToIns([2, 5, 10], 15);
