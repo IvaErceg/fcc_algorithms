@@ -96,6 +96,19 @@ function repeatStringNumTimes(str, num) {
 }
 
 /**
+ * Truncate a string if it is longer than the given maximum string length. Return the truncated string with a ... ending.
+ * @param {String} str - string to truncate
+ * @param {Number} num - maximum length of the string
+ * @return {String} - Truncated string (...) if longer than max chars, input string otherwise
+ */
+function truncateString(str, num) {
+  if (str.length > num) {
+    return str.slice(0, num) + "...";
+  }
+  return str;
+}
+
+/**
  * Looks through an array and returns the first element in the array for which the function returns true
  * @param {Array} arr - array of elements
  * @param {Function} func - callback to invoke on each el of an array
@@ -187,6 +200,7 @@ function chunkArrayInGroups(arr, size) {
   return nested;
 }
 
+//tests
 convertToF(30);
 reverseString("hello");
 factorializeRecursive(10);
@@ -200,6 +214,7 @@ largestOfFour([
 ]);
 confirmEnding("Bastian", "n");
 repeatStringNumTimes("abc", 5);
+truncateString("A-tisket a-tasket A green and yellow basket", 8);
 findElement([1, 2, 3, 4], function(num) {
   return num % 2 === 0;
 });
