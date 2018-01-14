@@ -166,6 +166,27 @@ function mutation(arr) {
   return true;
 }
 
+/**
+ * Splits an array into groups the length of size and returns them as a two-dimensional array
+ * @param {Array} arr  - arr to split
+ * @param {Number} size - length of the subarray
+ * @return {Array} - array consisting of subarrays with the length of size param
+ */
+function chunkArrayInGroups(arr, size) {
+  const nested = [];
+  for (let i = 0; i < arr.length; i += size) {
+    const sizedArr = [];
+    for (let j = i; j < size + i; j++) {
+      if (j == arr.length) {
+        break;
+      }
+      sizedArr.push(arr[j]);
+    }
+    nested.push(sizedArr);
+  }
+  return nested;
+}
+
 convertToF(30);
 reverseString("hello");
 factorializeRecursive(10);
@@ -187,3 +208,4 @@ titleCase("I'm a little tea pot");
 bouncer([7, "ate", "", false, 9]);
 getIndexToIns([2, 5, 10], 15);
 mutation(["hello", "Hello"]);
+chunkArrayInGroups([0, 1, 2, 3, 4, 5], 4);
