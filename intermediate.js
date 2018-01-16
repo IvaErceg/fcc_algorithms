@@ -38,7 +38,29 @@ function destroyer(arr) {
     return filtered;
   }
   
+  /**
+   * Takes the first consonant (or consonant cluster) of an English word, moves it to the end of the word and suffixes an "ay".
+   * If a word begins with a vowel just add "way" to the end.
+   * If there are no vowels just add "ay" to the end.
+   * @param {String} str - provided string
+   * @return {String} string in pig latin
+   */
+  function translatePigLatin(str) {
+    if(str.match(/^[aeiou]/)) {
+      return `${str}way`;
+    }
+     if(!str.match(/[aeiou]+/)) {
+      return `${str}ay`;
+    }
+    const consonants =/^[bcdfghjklmnprstqvwz]+/;
+    const strWithPattern = str.match(consonants)[0];
+    const len = strWithPattern.length;
+    return `${str.slice(len)}${strWithPattern}ay`;
+  }
+  
+  
   //tests
   sumAll([1, 4]);
   diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
   destroyer([1, 2, 3, 1, 2, 3], 3, 2);
+  translatePigLatin("krstvg");
