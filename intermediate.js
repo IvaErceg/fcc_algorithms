@@ -58,9 +58,19 @@ function destroyer(arr) {
     return `${str.slice(len)}${strWithPattern}ay`;
   }
   
+
+  
+  function myReplace(str, before, after) {
+    isUpper = (str) => str.charAt(0) === str.charAt(0).toUpperCase();
+    const replaceWith = isUpper(before) ? after.charAt(0).toUpperCase() + after.slice(1) : after.toLowerCase();
+    return str.replace(before, replaceWith);
+  }
+  
+
   
   //tests
   sumAll([1, 4]);
   diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
   destroyer([1, 2, 3, 1, 2, 3], 3, 2);
   translatePigLatin("krstvg");
+  myReplace("A quick brown fox jumped over the lazy dog", "jumped", "leaped");
