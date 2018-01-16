@@ -4,7 +4,7 @@
  * @return {Number} - sum of whole range between 2 numbers in array
  */
 function sumAll(arr) {
-    const min = Math.min(...arr);
+    const min = Math.min(...arr); //spreading array so we can use Math functions
     const max = Math.max(...arr);
     let total = 0;
     for(let i = min; i<= max; i++) {
@@ -24,7 +24,21 @@ function sumAll(arr) {
      ...arr2.filter(el => !arr1.includes(el))];
   }
 
+  /**
+   * Removes all elements from the initial array that are of the same value as other provided arguments.
+   * @param {Array} arr
+   * @return {Array} - filtered array with no values same as provided arguments
+   */
+function destroyer(arr) {
+    let filtered = [...arr];
+    const args = Array.from(arguments).slice(1); //make args real array
+    args.forEach(arg => {
+      filtered = filtered.filter(el => el !== arg); 
+      });
+    return filtered;
+  }
+  
   //tests
   sumAll([1, 4]);
   diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
-  
+  destroyer([1, 2, 3, 1, 2, 3], 3, 2);
