@@ -38,6 +38,22 @@ function destroyer(arr) {
     return filtered;
   }
   
+/**
+ * Looks through an array of objects and returns an array of all objects that have matching name and value pairs.
+ *  Each name and value pair of the source object has to be present in the object from the collection if it is to be included in the returned array.
+ * @param {Array} collection - array of objects
+ * @param {Object} source - object with properties on which to filter
+ * @return {Array} filtered array that includes only objects which properties are the same as in provided obj
+ */
+function whatIsInAName(collection, source) {
+  let filtered = collection;
+  for(let prop in source) {
+    filtered = filtered
+      .filter(el => el[prop] === source[prop]);
+  }
+  return filtered;
+}
+
   /**
    * Takes the first consonant (or consonant cluster) of an English word, moves it to the end of the word and suffixes an "ay".
    * If a word begins with a vowel just add "way" to the end.
@@ -59,7 +75,14 @@ function destroyer(arr) {
   }
   
 
-  
+/**
+ * Perform a search and replace on the sentence using the arguments provided and return the new sentence. 
+ * Preserve the case of the first character in the original word when you are replacing it. 
+ * @param {String} str - original string
+ * @param {String} before - what to replace
+ * @param {String} after - what to replace with
+ * @return {String} - string in which one word is replaced with another
+ */
   function myReplace(str, before, after) {
     isUpper = (str) => str.charAt(0) === str.charAt(0).toUpperCase();
     const replaceWith = isUpper(before) ? after.charAt(0).toUpperCase() + after.slice(1) : after.toLowerCase();
@@ -72,5 +95,6 @@ function destroyer(arr) {
   sumAll([1, 4]);
   diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
   destroyer([1, 2, 3, 1, 2, 3], 3, 2);
+  whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
   translatePigLatin("krstvg");
   myReplace("A quick brown fox jumped over the lazy dog", "jumped", "leaped");
