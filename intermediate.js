@@ -88,9 +88,93 @@ function whatIsInAName(collection, source) {
     const replaceWith = isUpper(before) ? after.charAt(0).toUpperCase() + after.slice(1) : after.toLowerCase();
     return str.replace(before, replaceWith);
   }
-  
 
-  
+  /**
+   * The DNA strand is missing the pairing element. Take each character, get its pair, and return the results as a 2d array.
+   * @param {String} str
+   * @return {Array} - array with pairs of strings as a subarrays
+   */
+function pairElement(str) {
+  let pairs = [];
+  const arr = str.split("");
+   arr.forEach(el => {
+     if(el === "A") {
+       pairs.push(["A", "T"]);
+     } else if(el === "T") {
+       pairs.push(["T", "A"]);
+     } 
+     else if(el === "C") {
+       pairs.push(["C", "G"]);
+     } 
+     else if(el === "G") {
+       pairs.push(["G", "C"]);
+     } 
+   });
+   return pairs;
+}
+
+/**
+ * Check if the predicate (second argument) is truthy on all elements of a collection (first argument).
+ * @param {Array} collection 
+ * @param {String} pre - property of an object
+ * @return{Boolean} - true if property value is truthy on all items in collection, false otherwise
+ */
+function truthCheck(collection, pre) {
+  // Is everyone being true?
+  return collection.every(el => el[pre]);
+}
+
+/**
+ * Sums two arguments together. If only one argument is provided, then return a function that expects one argument and returns the sum.
+ * @return{Number or Function} - if both arguments are provided, return their sum, otherwise return function which works as an adder
+ */
+function addTogether() {
+  const a = arguments[0];
+  const b = arguments[1];
+  if(a && typeof(a) !== "number" || b && typeof(b) !== "number") {
+    return undefined;
+  }
+   if(a && b) {
+      return a + b;
+}
+      return function(x) {
+         if(typeof(x) !== "number") {
+            return undefined;
+          }
+         return a + x;
+       };  
+}
+
+/**
+ * implement Person constructor function
+ * @param {String} firstAndLast - full name of a person 
+ */
+var Person = function(firstAndLast) {
+  // Complete the method below and implement the others similarlyž
+  let firstName = firstAndLast.split(" ")[0];
+  let lastName = firstAndLast.split(" ")[1];
+   this.getFirstName = function() {
+    return firstName;
+  };
+   this.getLastName = function() {
+    return lastName;
+  };
+  this.getFullName = function() {
+    return `${firstName} ${lastName}`;
+  };
+   this.setFirstName = function(first) {
+    firstName = first;
+  };
+   this.setLastName = function(last) {
+    lastName = last;
+  };
+   this.setFullName = function(firstAndLast) {
+     firstName = firstAndLast.split(" ")[0];
+     lastName = firstAndLast.split(" ")[1];
+     fullName = `${firstName} ${lastName}`;
+  };
+};
+
   //tests
   sumAll([1, 4]);
   diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
@@ -98,3 +182,8 @@ function whatIsInAName(collection, source) {
   whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
   translatePigLatin("krstvg");
   myReplace("A quick brown fox jumped over the lazy dog", "jumped", "leaped");
+  pairElement("GCG");
+  truthCheck([{"user": "Tinky-Winky", "sex": "male"}, {"user": "Dipsy", "sex": "male"}, {"user": "Laa-Laa", "sex": "female"}, {"user": "Po", "sex": "female"}], "sex");
+  addTogether(2,"3");
+  var bob = new Person('Bob Ross');
+  bob.getFullName();
